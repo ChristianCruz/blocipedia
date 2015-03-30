@@ -7,7 +7,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 
-gem 'sqlite3'
+gem 'pg'
 
 gem 'sass-rails', '~> 5.0'
 
@@ -46,3 +46,6 @@ end
 gem 'bootstrap-sass'
 
 gem 'devise'
+
+gem 'figaro', '1.0'
+
