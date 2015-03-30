@@ -36,6 +36,8 @@ group :development, :test do
   gem 'factory_girl_rails'
 
   gem 'capybara'
+
+  gem 'database_cleaner'
 end
 
 
@@ -48,4 +50,6 @@ gem 'bootstrap-sass'
 gem 'devise'
 
 gem 'figaro', '1.0'
+
+
 
