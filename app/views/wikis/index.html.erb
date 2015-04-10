@@ -1,0 +1,10 @@
+<h1>Here's the list of all wikis</h1>
+<% @wikis.each do |w| %>
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+      <%= w.title %>
+    </h4>
+    </div>
+  </div>
+<% end %>
