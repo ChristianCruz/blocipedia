@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   has_many :wikis
 
+  mount_uploader :avatar, AvatarUploader
+
   after_initialize :init
   
   def init

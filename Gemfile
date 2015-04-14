@@ -55,5 +55,11 @@ gem 'pundit'
 
 gem 'faker'
 
+gem 'carrierwave'
+
+gem 'mini_magick'
+
+gem 'fog'
+
 
 
