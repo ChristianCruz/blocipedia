@@ -1,11 +1,36 @@
 <div class="row">
-   <div class="col-md-8">
-     <div class="media">
+  <div class="col-md-8">
+    <h1>
+      Hello, <%= @user.name %>!
+    </h1>
+    <p>Rigth now you're a <strong><%= current_user.role %></strong> member. Would you like to change that?</p>
+    <p>Click the button below to toggle your role from premium to standard and vice-versa. <%= button_to "Upgrade account", user_toggle_role_path(current_user), method: :post, class: 'btn btn-success' %></p>
+  </div>
+
+  <div class="col-md-4">
+    <div class="media">
        <% if @user.avatar? %>
          <%= image_tag @user.avatar.url, class: 'pull-left' %>
        <% end %>
      </div>
-   </div>
- </div>
+  </div>
+</div>
  
- </br>
+<hr>
+
+<div class="row">
+  <div class="col-md-6">
+    <% if current_user.role == 'standard' %>
+    <h3>Public Wikis:</h3>
+      <ul class="list-group bloc-index">
+        <!-- missing code to display public wikis  -->
+      </ul>
+      <% elsif current_user.role == 'premium' %>
+      <h3>Private Wikis:</h3>
+      <ul class="list-group bloc-index">
+        <!-- missing code to display public wikis  -->
+      </ul>
+    <% end %>
+  </div>
+</div>
+

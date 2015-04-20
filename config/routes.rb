@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  # get 'user/edit'
 
-  # get 'user/update'
+  # get 'user/downgrade'
+  get 'user/upgrade'
 
-  resources :user, only: [:update, :show, :index]
+  resources :charges, only: [:new, :create]
+
+  resources :user, only: [:update, :show, :index] do
+    post "toggle_role"
+  end
 
   #CRUD for wikis
   resources :wikis
@@ -12,5 +16,5 @@ Rails.application.routes.draw do
 
   get 'about' => "welcome#about"
 
-  root to: 'welcome#index'
+  root to: 'wikis#index'
 end

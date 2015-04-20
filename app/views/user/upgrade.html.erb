@@ -1,0 +1,9 @@
+<h1>Upgrade your account today!</h1>
+
+
+<p>Current Role: <%= current_user.role %> </p>
+
+<p>Click here to toggle your role from premium to standard and vice-versa. <%= button_to "Upgrade account", user_toggle_role_path(current_user), method: :post, class: 'btn btn-success' %></p>
+
+</hr>
+
