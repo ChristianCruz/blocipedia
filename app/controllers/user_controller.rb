@@ -6,7 +6,7 @@ class UserController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      redirect_to user_edit_path(@user)
+      redirect_to @user
     else
       render :edit, error: "There was an error updating your information"
     end
@@ -14,6 +14,7 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @wikis = @user.wikis.all
    end
 
    def toggle_role
@@ -45,6 +46,7 @@ class UserController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :avatar)
+    params.require(:user).permit(:name, :email, :avatar, :avatar_cache)
+
   end
 end

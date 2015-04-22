@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :charges, only: [:new, :create]
 
-  resources :user, only: [:update, :show, :index] do
+  resources :user, only: [:update, :show, :index, :edit] do
     post "toggle_role"
   end
 

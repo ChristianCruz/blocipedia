@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.visible_to(current_user).paginate(page: params[:page], per_page: 10)
     authorize @wikis
   end
 
@@ -15,6 +15,7 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new(wiki_params)
+    @wiki.user = current_user
     authorize @wiki
     if @wiki.save
       redirect_to @wiki, notice: "Wiki saved succesfully!"
@@ -47,7 +48,6 @@ class WikisController < ApplicationController
         render :show, error: "There was an error deleting your wiki!"
       end
     end
-
 
   #| = = = = = = = = = = = = = = =*/
   #| = = = PRIVATE METHODS = = = */
