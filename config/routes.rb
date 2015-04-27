@@ -16,5 +16,5 @@ Rails.application.routes.draw do
 
   get 'about' => "welcome#about"
 
-  root to: 'wikis#index'
+  root to: 'welcome#index'
 end

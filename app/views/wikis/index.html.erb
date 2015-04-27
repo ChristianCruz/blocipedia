@@ -1,36 +1,17 @@
-<div class="jumbotron">
-  <h1>Blocipedia</h1>
-  <p>a production quality SaaS app that allows users to create their own wikis.</p>
-  <% if current_user == nil %>
-  <hr>
-  <p>Choose your member ship to start creating your own wikis!</p>
-  <div class="row">
-    <div class="col-md-6 pull-left">
-        <h4>Standard membership</h4>
-        <p>As a standard member all your wikis will be public</p>
-          <%= link_to "Standard membership", new_user_registration_path, class: 'btn btn-primary' %>
-      </div>
-    <div class="col-md-6 pull-right">
-      <h4>Premium membership</h4>
-      <p>As a premium member your wikis will be private</p>
-      <%= link_to "Premium membership", new_user_session_path, class: 'btn btn-primary' %>
-    </div>
-  </div>
-  <% elsif current_user.role == 'standard'  %>
-    <h3>Upgrade your account to create your own private wikis!</h3>
-    <%= link_to "Upgrade", new_charge_path, id: 'upgrade', class: 'btn btn-primary' %>
-  <% end %>
-</div>
 <div class="row">
-  <div class="col-md-8">
-    <% if !@wikis.empty?  %>
-      <h1>Here's the list of all public wikis</h1>
-      <ul class="list-group bloc-index">
-        <% @wikis.each do |wiki| %>
-          <li class="list-group-item"><%= link_to wiki.title, wiki %></li>
-        <% end %>
-      </ul>
-   <% end %>
+  <div class="col-md-7">
+    <h1>Here's the list of all public wikis</h1>
+    <ul class="list-group bloc-index">
+      <% @wikis.each do |wiki| %>
+        <li class="list-group-item"><%= link_to wiki.title, wiki %></li>
+      <% end %>
+      <%= will_paginate @wikis %>
+    </ul>
+  </div>
+   <div class="col-md-5">
+     <%= link_to "Create a new wiki", new_wiki_path, class: 'btn btn-primary btn-block new-wiki' %>
+   </div>
+</div>
 
 
 

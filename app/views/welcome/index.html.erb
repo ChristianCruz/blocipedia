@@ -1,15 +1,28 @@
 <br/>
 <div class="jumbotron">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-9 col-md-offset-2">
-        <h1>Welcome to Blocipedia</h1>
-        <p>This will be the homepage for Blocipedia, an Saas Wiki Collaboration Tool</p> 
-        <p class="text-center">
-        <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
-        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %>
-        </p>
+  <em><h3 class="text-center">A production quality SaaS app that allows users to create their own wikis.</h3></em>
+ <hr>
+  <% if current_user == nil %>
+  
+  <br/>
+  <p>Choose your member ship to start creating your own wikis!</p>
+  <br/>
+  <div class="row">
+    <div class="col-md-6 pull-left">
+        <h4>Standard membership</h4>
+        <p>As a standard member all your wikis will be public</p>
+          <%= link_to "Standard membership", new_user_registration_path, class: 'btn btn-primary' %>
       </div>
+    <div class="col-md-6 pull-right">
+      <h4>Premium membership</h4>
+      <p>As a premium member your wikis will be private</p>
+      <%= link_to "Premium membership", new_user_session_path, class: 'btn btn-primary' %>
     </div>
   </div>
+  <% elsif current_user.role == 'standard'  %>
+    <h3 class="text-center">Upgrade your account to create your own private wikis!</h3>
+    <div class="col-md-4 col-md-offset-4">
+      <%= link_to "Make me premium", new_charge_path, id: 'upgrade', class: 'btn btn-primary center-block' %>
+    </div>
+  <% end %>
 </div>
